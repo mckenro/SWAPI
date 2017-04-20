@@ -1,22 +1,24 @@
-var Calculator = require('./../js/pingpong.js').calculatorModule;
+var Starwar = require('./../js/pingpong.js').starwarModule;
+
+var showCharacter = function(named, height, mass, hair_color, skin_color, eye_color, birth_year, gender, home){
+
+    $('#name').text("Heres the character " + named);
+    $('#height').text("Height: " + height + " cm");
+    $('#mass').text("Mass: " + mass + " Kg");
+    $('#hair_color').text("Hair Color: " + hair_color);
+    $('#skin_color').text("Skin Color: " + skin_color);
+    $('#eye_color').text("Eye Color: " + eye_color);
+    $('#birth_year').text("Born: " + birth_year);
+    $('#gender').text("Gender: " + gender);
+    $('#home').text("Home: " + home);
+  };
+
 
 $(document).ready(function(){
-  $('form#pingpong-form').submit(function(event){
+  $('form#nameInput').submit(function(event){
     event.preventDefault();
-    var goal = parseInt($('input#goal').val());
-    var simpleCalculator = new Calculator ("hot pink");
-    var output = simpleCalculator.pingpong(goal);
-    output.forEach(function(element){
-      $('#solution').append("<li>" + element + "</li>");
-    });
-  });
+    var named = $("#goal").val();
+    var starwar = new Starwar(name=named, height, mass, hair_color, skin_color, eye_color, birth_year, gender, home);
+    starwar.searchByName(named, showCharacter);
 });
-
-$(document).ready(function(){
-  $('form#signup').submit(function(event){
-    event.preventDefault();
-    var email = $('#email').val();
-    $('form#signup').hide();
-    $('#solution').prepend('<p>Thank you, ' + email + ' has been added to our list!</p>');
-  });
 });
