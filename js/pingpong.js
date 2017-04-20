@@ -22,7 +22,7 @@ Starwar.prototype.searchByName = function(userName, showCharacter){
         }
         }
         console.log(home[0]);
-        if(home[0] !== undefined){
+        if(home[0] !== null){
           $.get(home[0]).then(function(homey){
             character.home = homey.name;
             homeWorldArray.push(character.home);
